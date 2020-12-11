@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      layout:decorate="~{layouts/layout}">
+<head></head>
+<body>
+<div th:fragment="navibar">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" id="main_navbar">
+        <a class="navbar-brand" href="/">Home</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        Items
+                    </a>
+                    <ul class="dropdown-menu animated fadeIn" aria-labelledby="navbarDropdown">
+                        <li class="nav-item dropdown">
+                            <a class="dropdown-item dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Weapons
+                            </a>
+                            <ul class="dropdown-menu animated fadeIn" aria-labelledby="navbarDropdown1">
+                                <li><a class="dropdown-item" href="/items/1h_dagger" th:href="@{/items/1h_dagger}" >Dagger</a></li>
+                                <li><a class="dropdown-item" href="/items/1h_sword">Sword</a></li>
+                                <li><a class="dropdown-item" href="/items/1h_mace">Mace</a></li>
+                                <li><a class="dropdown-item" href="/items/2h_staff">Staff</a></li>
+                                <li><a class="dropdown-item" href="/items/2h_book">Spellbook</a></li>
+                                <li><a class="dropdown-item" href="/items/2h_orb">Orb</a></li>
+                                <li><a class="dropdown-item" href="/items/2h_sword">Greatsword</a></li>
+                                <li><a class="dropdown-item" href="/items/2h_polearm">Polearm</a></li>
+                                <li><a class="dropdown-item" href="/items/bow">Bow</a></li>
+                                <li><a class="dropdown-item" href="/items/1h_gun">Aether Revolver</a></li>
+                                <li><a class="dropdown-item" href="/items/2h_cannon">Aether Cannon</a></li>
+                                <li><a class="dropdown-item" href="/items/2h_harp">Stringed Instrument</a></li>
+                                <li><a class="dropdown-item" href="/items/2h_keyblade">Aether Key</a></li>
+                                <li><a class="dropdown-item" href="/items/2h_spray">Paint Rings</a></li>
+                            </ul>
+                        </li>
+
+                        <div class="dropdown-divider"></div>
+                        <li class="nav-item dropdown">
+                            <a class="dropdown-item dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Armor
+                            </a>
+                            <ul class="dropdown-menu animated fadeIn" aria-labelledby="navbarDropdown1">
+                                <li><a class="dropdown-item" href="#">1</a></li>
+                                <li><a class="dropdown-item" href="#">2</a></li>
+                            </ul>
+                        </li>
+
+                        <div class="dropdown-divider"></div>
+                        <li class="nav-item dropdown">
+                            <a class="dropdown-item dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Accessories
+                            </a>
+                            <ul class="dropdown-menu animated fadeIn" aria-labelledby="navbarDropdown1">
+                                <li><a class="dropdown-item" href="#">1</a></li>
+                                <li><a class="dropdown-item" href="#">2</a></li>
+                            </ul>
+                        </li>
+
+                        <div class="dropdown-divider"></div>
+                        <li class="nav-item dropdown">
+                            <a class="dropdown-item dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Skills
+                            </a>
+                            <ul class="dropdown-menu animated fadeIn" aria-labelledby="navbarDropdown1">
+                                <li><a class="dropdown-item" href="#">1</a></li>
+                                <li><a class="dropdown-item" href="#">2</a></li>
+                            </ul>
+                        </li>
+
+                        <div class="dropdown-divider"></div>
+                        <li class="nav-item dropdown">
+                            <a class="dropdown-item dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Home Décor
+                            </a>
+                            <ul class="dropdown-menu animated fadeIn" aria-labelledby="navbarDropdown1">
+                                <li><a class="dropdown-item" href="#">1</a></li>
+                                <li><a class="dropdown-item" href="#">2</a></li>
+                            </ul>
+                        </li>
+
+                        <div class="dropdown-divider"></div>
+                        <li class="nav-item dropdown">
+                            <a class="dropdown-item dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Crafting
+                            </a>
+                            <ul class="dropdown-menu animated fadeIn" aria-labelledby="navbarDropdown1">
+                                <li><a class="dropdown-item" href="#">1</a></li>
+                                <li><a class="dropdown-item" href="#">2</a></li>
+                            </ul>
+                        </li>
+
+                        <div class="dropdown-divider"></div>
+                        <li class="nav-item dropdown">
+                            <a class="dropdown-item dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Consumables
+                            </a>
+                            <ul class="dropdown-menu animated fadeIn" aria-labelledby="navbarDropdown1">
+                                <li><a class="dropdown-item" href="#">1</a></li>
+                                <li><a class="dropdown-item" href="#">2</a></li>
+                            </ul>
+                        </li>
+
+                        <div class="dropdown-divider"></div>
+                        <li class="nav-item dropdown">
+                            <a class="dropdown-item dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Modify
+                            </a>
+                            <ul class="dropdown-menu animated fadeIn" aria-labelledby="navbarDropdown1">
+                                <li><a class="dropdown-item" href="#">1</a></li>
+                                <li><a class="dropdown-item" href="#">2</a></li>
+                            </ul>
+                        </li>
+
+                        <div class="dropdown-divider"></div>
+                        <li class="nav-item dropdown">
+                            <a class="dropdown-item dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Miscellaneous
+                            </a>
+                            <ul class="dropdown-menu animated fadeIn" aria-labelledby="navbarDropdown1">
+                                <li><a class="dropdown-item" href="#">1</a></li>
+                                <li><a class="dropdown-item" href="#">2</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#">Disabled</a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+</div>
+</body>
+</html>
