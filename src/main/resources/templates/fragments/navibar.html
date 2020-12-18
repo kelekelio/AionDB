@@ -25,9 +25,9 @@
                                 Weapons
                             </a>
                             <ul class="dropdown-menu animated fadeIn" aria-labelledby="navbarDropdown1">
-                                <li><a class="dropdown-item" href="/items/1h_dagger" th:href="@{/items/1h_dagger}" >Dagger</a></li>
-                                <li><a class="dropdown-item" href="/items/1h_sword">Sword</a></li>
-                                <li><a class="dropdown-item" href="/items/1h_mace">Mace</a></li>
+                                <li><a class="dropdown-item" th:href="@{/items/1h_dagger}" data-th-text="#{STR_TOOLTIP_DAGGER}"></a></li>
+                                <li><a class="dropdown-item" th:href="@{/items/1h_sword}" data-th-text="#{STR_TOOLTIP_SWORD}"></a></li>
+                                <li><a class="dropdown-item" th:href="@{/items/1h_mace}" data-th-text="#{STR_TOOLTIP_MACE}"></a></li>
                                 <li><a class="dropdown-item" href="/items/2h_staff">Staff</a></li>
                                 <li><a class="dropdown-item" href="/items/2h_book">Spellbook</a></li>
                                 <li><a class="dropdown-item" href="/items/2h_orb">Orb</a></li>
@@ -38,7 +38,7 @@
                                 <li><a class="dropdown-item" href="/items/2h_cannon">Aether Cannon</a></li>
                                 <li><a class="dropdown-item" href="/items/2h_harp">Stringed Instrument</a></li>
                                 <li><a class="dropdown-item" href="/items/2h_keyblade">Aether Key</a></li>
-                                <li><a class="dropdown-item" href="/items/2h_spray">Paint Rings</a></li>
+                                <li><a class="dropdown-item" href="/items/2h_spray" data-th-text="#{STR_TOOLTIP_SPRAY}" >Paint Rings</a></li>
                             </ul>
                         </li>
 
