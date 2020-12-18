@@ -25,8 +25,9 @@ public class DBMessageSource extends AbstractMessageSource {
     protected MessageFormat resolveCode(String name, Locale locale) {
         TranslationEntity message = translationRepository.findByName(name);
         String code = locale.getLanguage();
-        String loca = "";
+        String loca;
 
+        //if key was not found in the database (improssibruuuu~!!11), return the key
         if (message == null) {
             return new MessageFormat(name, locale);
         }
