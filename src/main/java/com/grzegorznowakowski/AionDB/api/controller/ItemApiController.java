@@ -25,10 +25,7 @@ public class ItemApiController {
     public ResponseEntity<ItemEntity> getItemById(@PathVariable("id") Integer id) {
         Optional<ItemEntity> item = itemRepository.findById(id);
 
-        if (item.isPresent()) {
-            return new ResponseEntity<>(item.get(), HttpStatus.OK);
-        }
+        return item.map(itemEntity -> new ResponseEntity<>(itemEntity, HttpStatus.OK)).orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
 
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 }
