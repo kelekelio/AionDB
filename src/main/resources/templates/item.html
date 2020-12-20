@@ -15,10 +15,7 @@
 <div th:replace="fragments/navibar :: navibar"></div>
 
 
-    <div th:text="${item.id}"></div>
-    <div th:text="${item.name}"></div>
-    <div th:text="${item.description}"></div>
-    <div th:text="${item.descLong}"></div>
+<div th:replace="items/item :: item"></div>
 
 <div th:replace="fragments/javascript :: js"></div>
 </body>

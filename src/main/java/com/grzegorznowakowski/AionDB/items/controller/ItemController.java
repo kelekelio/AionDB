@@ -39,6 +39,21 @@ public class ItemController {
         return "item";
     }
 
+    @RequestMapping({"/tooltip/{id}"})
+    public String itemTooltipView(@PathVariable(value = "id") Integer id, Model model) {
+
+        try {
+            ItemEntity item = itemService.get(id);
+            model.addAttribute("item", item);
+        } catch (NoSuchElementException e){
+            ItemEntity item = new ItemEntity();
+            model.addAttribute("item", item);
+        }
+
+
+        return "items/item";
+    }
+
 
     @RequestMapping({"/items/{type}"})
     public String listItems(@PathVariable("type") String type, Model model) {
