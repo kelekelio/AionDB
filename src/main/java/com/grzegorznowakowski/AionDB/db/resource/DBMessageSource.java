@@ -1,7 +1,7 @@
-package com.grzegorznowakowski.AionDB.resource;
+package com.grzegorznowakowski.AionDB.db.resource;
 
-import com.grzegorznowakowski.AionDB.entity.TranslationEntity;
-import com.grzegorznowakowski.AionDB.repository.TranslationRepository;
+import com.grzegorznowakowski.AionDB.db.entity.TranslationEntity;
+import com.grzegorznowakowski.AionDB.db.repository.TranslationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.AbstractMessageSource;
 import org.springframework.stereotype.Component;

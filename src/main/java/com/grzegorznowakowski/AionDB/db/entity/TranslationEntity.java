@@ -1,4 +1,4 @@
-package com.grzegorznowakowski.AionDB.entity;
+package com.grzegorznowakowski.AionDB.db.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -144,5 +144,18 @@ public class TranslationEntity {
 
     public void setCn(String cn) {
         this.cn = cn;
+    }
+
+    public String getLocaString (String language) {
+
+        switch (language) {
+            case "en":
+                return (en != null) ? en : body;
+            case "de":
+                return (de != null) ? de : body;
+            default:
+                return (body != null) ? body : name;
+        }
+
     }
 }

@@ -1,6 +1,6 @@
-package com.grzegorznowakowski.AionDB.repository;
+package com.grzegorznowakowski.AionDB.db.repository;
 
-import com.grzegorznowakowski.AionDB.entity.TranslationEntity;
+import com.grzegorznowakowski.AionDB.db.entity.TranslationEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;

@@ -1,4 +1,4 @@
-package com.grzegorznowakowski.AionDB.config;
+package com.grzegorznowakowski.AionDB.db.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

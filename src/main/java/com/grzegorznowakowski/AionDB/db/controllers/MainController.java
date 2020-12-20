@@ -1,8 +1,7 @@
-package com.grzegorznowakowski.AionDB.controllers;
+package com.grzegorznowakowski.AionDB.db.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.Map;
 
