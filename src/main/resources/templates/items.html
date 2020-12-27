@@ -14,7 +14,57 @@
 <body>
 <div th:replace="fragments/navibar :: navibar"></div>
 
+<div id="main-wrapper">
+    <div class="content-body">
+        <!-- row -->
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-2 col-sm-6">
+                    <div class="card">
+                        <div class="stat-widget-two card-body">
+                            <div class="stat-content"></div>
+                        </div>
+                    </div>
+                </div>
 
+                <div class="col-lg-8 col-sm-6">
+                    <div class="card">
+                        <div class="stat-widget-two card-body">
+                            <div class="stat-content">
+                                <table id="myTable" class="table">
+                                    <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th class="no-sorting"></th>
+                                        <th style="width: 100%">Name</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr th:each="item : ${itemList}">
+                                        <td th:text="${item.id}"></td>
+                                        <td ><img class="thumb" th:src="'https://aionpowerbook.com/item/icon/' + ${item.iconName} + '.png'" width="37" height="37" alt=""></td>
+                                        <td ><a th:href="'/item/' + ${item.id}" th:class="'col_' + ${item.quality} + ' bold'" th:text="${item.description}"></a></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-sm-6">
+                    <div class="card">
+                        <div class="stat-widget-two card-body">
+                            <div class="stat-content"></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /# column -->
+            </div>
+
+        </div>
+    </div>
+</div>
 
 <div th:replace="fragments/javascript :: js"></div>
 </body>

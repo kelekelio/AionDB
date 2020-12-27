@@ -31,3 +31,7 @@ $( document.body ).on( 'click', '.dropdown-menu li', function( event ) {
     return false;
 
 });
+
+$(document).ready( function () {
+    $('#myTable').DataTable();
+} );

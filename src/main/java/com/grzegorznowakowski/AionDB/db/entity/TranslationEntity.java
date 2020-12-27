@@ -1,9 +1,12 @@
 package com.grzegorznowakowski.AionDB.db.entity;
 
+import org.springframework.context.i18n.LocaleContextHolder;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.util.Locale;
 
 /**
  * @author Grzegorz Nowakowski
@@ -20,7 +23,7 @@ public class TranslationEntity {
     private String name;
 
     @Column
-    private String body = "";
+    private String body;
 
     @Column(name = "LAN_EN")
     private String en;
@@ -31,7 +34,7 @@ public class TranslationEntity {
     @Column(name = "LAN_FR")
     private String fr;
 
-    @Column(name = "ES")
+    @Column(name = "LAN_ES")
     private String es;
 
     @Column(name = "LAN_IT")
@@ -146,9 +149,12 @@ public class TranslationEntity {
         this.cn = cn;
     }
 
-    public String getLocaString (String language) {
+    public String getLocaString () {
 
-        switch (language) {
+        Locale locale = LocaleContextHolder.getLocale();
+        String code = locale.getLanguage();
+
+        switch (code) {
             case "en":
                 return (en != null) ? en : body;
             case "de":

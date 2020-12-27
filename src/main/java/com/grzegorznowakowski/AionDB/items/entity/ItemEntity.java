@@ -25,6 +25,32 @@ public class ItemEntity {
     @Column(name = "desc_long")
     private String descLong;
 
+    @Column(name = "icon_name")
+    private String iconName;
+
+    @Column(name = "equipment_slots")
+    private String equipmentSlots;
+
+    @Column(name = "weapon_type")
+    private String weaponType;
+
+    @Column(name = "armor_type")
+    private String armorType;
+
+    private String quality;
+
+
+
+
+
+
+
+
+
+
+
+
+
     public ItemEntity() {
     }
 
@@ -58,5 +84,49 @@ public class ItemEntity {
 
     public void setDescLong(String descLong) {
         this.descLong = descLong;
+    }
+
+    public String getEquipmentSlots() {
+        return equipmentSlots;
+    }
+
+    public void setEquipmentSlots(String equipmentSlots) {
+        this.equipmentSlots = equipmentSlots;
+    }
+
+    public String getWeaponType() {
+        return weaponType;
+    }
+
+    public void setWeaponType(String weaponType) {
+        this.weaponType = weaponType;
+    }
+
+    public String getIconName() {
+        return iconName;
+    }
+
+    public void setIconName(String iconName) {
+        this.iconName = iconName;
+    }
+
+    public String getQuality() {
+        return quality;
+    }
+
+    public void setQuality(String quality) {
+        this.quality = quality;
+    }
+
+    public String getArmorType() {
+        return armorType;
+    }
+
+    public void setArmorType(String armorType) {
+        this.armorType = armorType;
+    }
+
+    public String getProperIconName (String iconName) {
+        return iconName.toLowerCase().replaceAll(".dds", "");
     }
 }
