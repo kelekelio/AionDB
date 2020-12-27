@@ -67,9 +67,7 @@ public class ItemController {
 
         List<ItemEntity> itemList;
 
-        if (slot == null) {
-            slot = "nope";
-        }
+
 
 
 
