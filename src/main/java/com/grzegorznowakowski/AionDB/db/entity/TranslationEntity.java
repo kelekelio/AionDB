@@ -11,6 +11,7 @@ import java.util.Locale;
 /**
  * @author Grzegorz Nowakowski
  */
+
 @Entity
 @Table(name = "translation")
 public class TranslationEntity {
@@ -52,6 +53,24 @@ public class TranslationEntity {
     @Column(name = "LAN_CN")
     private String cn;
 
+
+    public TranslationEntity(Integer id, String name, String body, String en, String de, String fr, String es, String it, String pl, String ko, String us, String cn) {
+        this.id = id;
+        this.name = name;
+        this.body = body;
+        this.en = en;
+        this.de = de;
+        this.fr = fr;
+        this.es = es;
+        this.it = it;
+        this.pl = pl;
+        this.ko = ko;
+        this.us = us;
+        this.cn = cn;
+    }
+
+    public TranslationEntity() {
+    }
 
     public Integer getId() {
         return id;

@@ -1,9 +1,8 @@
 package com.grzegorznowakowski.AionDB.items.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import com.grzegorznowakowski.AionDB.db.entity.TranslationEntity;
+
+import javax.persistence.*;
 
 /**
  * @author Grzegorz Nowakowski
@@ -38,6 +37,11 @@ public class ItemEntity {
     private String armorType;
 
     private String quality;
+
+
+
+
+
 
 
 
@@ -125,6 +129,8 @@ public class ItemEntity {
     public void setArmorType(String armorType) {
         this.armorType = armorType;
     }
+
+
 
     public String getProperIconName (String iconName) {
         return iconName.toLowerCase().replaceAll(".dds", "");
