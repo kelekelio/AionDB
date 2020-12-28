@@ -170,17 +170,23 @@ public class TranslationEntity {
 
     public String getLocaString () {
 
+        String loca;
+
         Locale locale = LocaleContextHolder.getLocale();
         String code = locale.getLanguage();
 
         switch (code) {
             case "en":
-                return (en != null) ? en : body;
+                loca = (en != null) ? en : body;
+                break;
             case "de":
-                return (de != null) ? de : body;
+                loca =  (de != null) ? de : body;
+                break;
             default:
-                return (body != null) ? body : name;
+                loca =  (body != null) ? body : name;
         }
+
+        return loca.replaceAll("&apos;", "'");
 
     }
 }

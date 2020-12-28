@@ -37,21 +37,11 @@ public class ItemsDataTablesController {
 
         Specification<ItemEntity> itemEntitySpecification = (Specification<ItemEntity>) (root, query, criteriaBuilder) -> {
 
-
-            Expression<String> weaponTypeExpression = criteriaBuilder.lower(root.get("weaponType"));
-
-
-
-
+            //Expression<String> weaponTypeExpression = criteriaBuilder.lower(root.get("weaponType"));
 
             return criteriaBuilder.and(
                     criteriaBuilder.between(root.get("id"), idRange.getMin(), idRange.getMax())
                     );
-
-
-
-
-
 
 /* example
             return criteriaBuilder.and(
@@ -81,6 +71,13 @@ public class ItemsDataTablesController {
 
         return itemDataTablesRepository.findAll(input, itemEntitySpecification);
     }
+
+    /*
+    Specification<ItemEntity> itemEntitySpecification = (Specification<ItemEntity>) (root, query, criteriaBuilder) -> {
+            //Expression<String> weaponTypeExpression = criteriaBuilder.lower(root.get("weaponType"));
+            return criteriaBuilder.and(criteriaBuilder.between(root.get("id"), idRange.getMin(), idRange.getMax()));
+            };
+     */
 
     @RequestMapping(value = "/itemajax", method = RequestMethod.POST)
     public DataTablesOutput<ItemEntity> listPOST(@Valid @RequestBody DataTablesInput input) {

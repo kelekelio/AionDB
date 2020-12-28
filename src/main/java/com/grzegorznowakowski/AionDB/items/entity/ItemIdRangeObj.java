@@ -48,6 +48,22 @@ public class ItemIdRangeObj {
                 this.min = 100100001;
                 this.max = 100199999;
                 break;
+            case "2h_orb":
+                this.min = 100500001;
+                this.max = 100599999;
+                break;
+            case "2h_book":
+                this.min = 100600001;
+                this.max = 100699999;
+                break;
+            case "2h_sword":
+                this.min = 100900001;
+                this.max = 100999999;
+                break;
+            case "supply_scroll":
+                this.min = 164000001;
+                this.max = 164039999;
+                break;
             default:
                 this.min = 1;
                 this.max = 2;
