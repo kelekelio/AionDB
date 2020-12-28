@@ -111,8 +111,8 @@
 
 
         $('table#ajaxTable').each(function() {
-            //var source = $(this).attr("ajaxurl");
-            var source = "/itemajax";
+            var type = $(this).attr("type");
+            var source = "/itemajax/" + type;
             var DataTable = $(this).DataTable( {
                 "fnDrawCallback": function(){
 

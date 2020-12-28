@@ -1,6 +1,8 @@
 package com.grzegorznowakowski.AionDB.api.controller;
 
 import com.grzegorznowakowski.AionDB.items.entity.ItemEntity;
+import com.grzegorznowakowski.AionDB.items.entity.ItemIdRangeObj;
+import com.grzegorznowakowski.AionDB.items.entity.ItemTypeObj;
 import com.grzegorznowakowski.AionDB.items.repository.ItemDataTablesRepository;
 import com.grzegorznowakowski.AionDB.items.repository.ItemRepository;
 import com.grzegorznowakowski.AionDB.items.service.ItemService;
@@ -8,10 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.datatables.mapping.DataTablesInput;
 import org.springframework.data.jpa.datatables.mapping.DataTablesOutput;
 import org.springframework.data.jpa.domain.Specification;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.criteria.Expression;
 import javax.validation.Valid;
@@ -27,8 +26,12 @@ public class ItemsDataTablesController {
     private ItemDataTablesRepository itemDataTablesRepository;
 
 
-    @RequestMapping(value = "/itemajax", method = RequestMethod.GET)
-    public DataTablesOutput<ItemEntity> list(@Valid DataTablesInput input) {
+    @RequestMapping(value = {"/itemajax", "/itemajax/{type}"}, method = RequestMethod.GET)
+    public DataTablesOutput<ItemEntity> list(@PathVariable(required = false) String type, @Valid DataTablesInput input) {
+
+
+        ItemIdRangeObj idRange = new ItemIdRangeObj();
+        idRange.setIdRangeBasedOnType(type);
 
 
 
@@ -42,15 +45,15 @@ public class ItemsDataTablesController {
 
 
             return criteriaBuilder.and(
-                            criteriaBuilder.equal(weaponTypeExpression, "1h_dagger")
+                    criteriaBuilder.between(root.get("id"), idRange.getMin(), idRange.getMax())
                     );
 
 
 
 
 
-            /* example
 
+/* example
             return criteriaBuilder.and(
                     criteriaBuilder.and(
                             criteriaBuilder.between(root.get("price"), 5, 500)
@@ -83,6 +86,17 @@ public class ItemsDataTablesController {
     public DataTablesOutput<ItemEntity> listPOST(@Valid @RequestBody DataTablesInput input) {
         return itemDataTablesRepository.findAll(input);
     }
+
+
+
+
+
+
+
+
+
+
+
 
 
 }

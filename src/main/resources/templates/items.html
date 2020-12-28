@@ -31,7 +31,7 @@
                     <div class="card">
                         <div class="stat-widget-two card-body">
                             <div class="stat-content">
-                                <table id="myTable" class="table">
+                                <table id="ajaxTable" class="table" th:attr="type=${itemType.type}">
                                     <thead>
                                     <tr>
                                         <th>ID</th>
@@ -39,13 +39,6 @@
                                         <th style="width: 100%">Name</th>
                                     </tr>
                                     </thead>
-                                    <tbody>
-                                    <tr th:each="item : ${itemList}">
-                                        <td th:text="${item.id}"></td>
-                                        <td ><img class="thumb" th:src="'https://aionpowerbook.com/item/icon/' + ${item.iconName} + '.png'" width="37" height="37" alt=""></td>
-                                        <td ><a th:href="'/item/' + ${item.id}" th:class="'col_' + ${item.quality} + ' bold'" th:text="${item.description}"></a></td>
-                                    </tr>
-                                    </tbody>
                                 </table>
                             </div>
                         </div>

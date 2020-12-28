@@ -2,6 +2,7 @@ package com.grzegorznowakowski.AionDB.items.controller;
 
 import com.grzegorznowakowski.AionDB.db.service.TranslationService;
 import com.grzegorznowakowski.AionDB.items.entity.ItemEntity;
+import com.grzegorznowakowski.AionDB.items.entity.ItemTypeObj;
 import com.grzegorznowakowski.AionDB.items.repository.ItemRepository;
 import com.grzegorznowakowski.AionDB.items.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,38 +63,12 @@ public class ItemController {
     }
 
 
-    @RequestMapping(value = {"/items/{type}", "/items/{type}/{slot}"})
-    public String listItems(@PathVariable("type") String type, @PathVariable(required = false) String slot, Model model) {
+    @RequestMapping(value = {"/items/{type}"})
+    public String listItems(@PathVariable("type") String type, Model model) {
 
-        List<ItemEntity> itemList;
+        ItemTypeObj itemType = new ItemTypeObj(type);
 
-
-
-
-
-        switch (type) {
-            case "weapon":
-                if (!slot.isEmpty()) {
-                    itemList = itemService.findByWeaponType(slot);
-                } else {
-                    itemList = new ArrayList<>();
-                }
-                break;
-            default:
-                itemList = itemService.findAllByIdBetween(1, 2);
-        }
-
-        for (ItemEntity item : itemList) {
-            item.setIconName(
-                    item.getProperIconName(item.getIconName())
-            );
-            item.setDescription(
-                    translationService.findByName(item.getDescription()).getLocaString().replaceAll("&apos;", "'")
-            );
-        }
-
-
-        model.addAttribute("itemList", itemList);
+        model.addAttribute("itemType", itemType);
 
         return "items";
     }
