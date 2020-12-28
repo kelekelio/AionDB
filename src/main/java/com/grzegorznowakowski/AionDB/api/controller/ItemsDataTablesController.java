@@ -30,14 +30,48 @@ public class ItemsDataTablesController {
     @RequestMapping(value = "/itemajax", method = RequestMethod.GET)
     public DataTablesOutput<ItemEntity> list(@Valid DataTablesInput input) {
 
+
+
         Specification<ItemEntity> itemEntitySpecification = (Specification<ItemEntity>) (root, query, criteriaBuilder) -> {
 
 
             Expression<String> weaponTypeExpression = criteriaBuilder.lower(root.get("weaponType"));
 
+
+
+
+
             return criteriaBuilder.and(
-                    criteriaBuilder.equal(weaponTypeExpression, "1h_dagger")
+                            criteriaBuilder.equal(weaponTypeExpression, "1h_dagger")
+                    );
+
+
+
+
+
+            /* example
+
+            return criteriaBuilder.and(
+                    criteriaBuilder.and(
+                            criteriaBuilder.between(root.get("price"), 5, 500)
+                    ),
+                    criteriaBuilder.and(
+                            criteriaBuilder.equal(weaponTypeExpression, "1h_dagger")
+                    )
             );
+
+            return criteriaBuilder.or(
+                    criteriaBuilder.and(
+                            criteriaBuilder.equal(firstNameExpression, parts[0]),
+                            criteriaBuilder.like(lastNameExpression, parts[1] + "%", '~')
+                    ),
+                    criteriaBuilder.and(
+                            criteriaBuilder.equal(lastNameExpression, parts[0]),
+                            criteriaBuilder.like(firstNameExpression, parts[1] + "%", '~')
+                    )
+            );
+             */
+
         };
 
 

@@ -38,6 +38,8 @@ public class ItemEntity {
 
     private String quality;
 
+    private Integer price;
+
 
 
 
@@ -130,7 +132,13 @@ public class ItemEntity {
         this.armorType = armorType;
     }
 
+    public Integer getPrice() {
+        return price;
+    }
 
+    public void setPrice(Integer price) {
+        this.price = price;
+    }
 
     public String getProperIconName (String iconName) {
         return iconName.toLowerCase().replaceAll(".dds", "");
