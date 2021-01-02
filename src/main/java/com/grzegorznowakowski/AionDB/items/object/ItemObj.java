@@ -13,7 +13,7 @@ public class ItemObj {
 
     private ItemEntity itemEntity;
 
-    private String translation;
+    private String description;
     private String descLong;
     private String price;
 
@@ -28,12 +28,12 @@ public class ItemObj {
         this.itemEntity = itemEntity;
     }
 
-    public String getTranslation() {
-        return translation;
+    public String getDescription() {
+        return description;
     }
 
-    public void setTranslation(String translation) {
-        this.translation = translation;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getDescLong() {
@@ -52,14 +52,5 @@ public class ItemObj {
         this.price = price;
     }
 
-    public void buildItem(TranslationService translationService) {
-        DecimalFormat decimalFormat = new DecimalFormat("#.##");
-        decimalFormat.setGroupingUsed(true);
-        decimalFormat.setGroupingSize(3);
-
-       this.translation = translationService.findByName(itemEntity.getDescription()).getLocaString();
-       this.descLong = translationService.findByName(itemEntity.getDescLong()).getLocaString();
-       this.price = decimalFormat.format(itemEntity.getPrice());
-    }
 
 }
