@@ -140,7 +140,4 @@ public class ItemEntity {
         this.price = price;
     }
 
-    public String getProperIconName (String iconName) {
-        return iconName.toLowerCase().replaceAll(".dds", "");
-    }
 }

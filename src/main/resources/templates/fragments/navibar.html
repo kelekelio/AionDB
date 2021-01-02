@@ -48,12 +48,21 @@
                                 Armor
                             </a>
                             <ul class="dropdown-menu animated fadeIn" aria-labelledby="navbarDropdown1">
-                                <li><a class="dropdown-item" th:href="@{/items/armor/clothes}"   data-th-text="#{STR_CLOTH}"></a></li>
-                                <li><a class="dropdown-item" th:href="@{/items/armor/robe}"   data-th-text="#{STR_ROBE}"></a></li>
-                                <li><a class="dropdown-item" th:href="@{/items/armor/leather}"   data-th-text="#{STR_LEATHER}"></a></li>
-                                <li><a class="dropdown-item" th:href="@{/items/armor/chain}"   data-th-text="#{STR_CHAIN}"></a></li>
-                                <li><a class="dropdown-item" th:href="@{/items/armor/plate}"   data-th-text="#{STR_PLATE}"></a></li>
-                                <li><a class="dropdown-item" th:href="@{/items/armor/no_armor}"   data-th-text="#{STR_TOOLTIP_SHIELD}"></a></li>
+                                <li><a class="dropdown-item" th:href="@{/items/clothes}"   data-th-text="#{STR_CLOTH}"></a></li>
+                                <li class="nav-item dropdown">
+                                    <a class="dropdown-item dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Cloth
+                                    </a>
+                                    <ul class="dropdown-menu animated fadeIn" aria-labelledby="navbarDropdown1">
+                                        <li><a class="dropdown-item" href="#">Jacket</a></li>
+                                        <li><a class="dropdown-item" href="#">Pants</a></li>
+                                    </ul>
+                                </li>
+                                <li><a class="dropdown-item" th:href="@{/items/robe}"   data-th-text="#{STR_ROBE}"></a></li>
+                                <li><a class="dropdown-item" th:href="@{/items/leather}"   data-th-text="#{STR_LEATHER}"></a></li>
+                                <li><a class="dropdown-item" th:href="@{/items/chain}"   data-th-text="#{STR_CHAIN}"></a></li>
+                                <li><a class="dropdown-item" th:href="@{/items/plate}"   data-th-text="#{STR_PLATE}"></a></li>
+                                <li><a class="dropdown-item" th:href="@{/items/shield}"   data-th-text="#{STR_TOOLTIP_SHIELD}"></a></li>
                             </ul>
                         </li>
 
@@ -120,6 +129,15 @@
                             <ul class="dropdown-menu animated fadeIn" aria-labelledby="navbarDropdown1">
                                 <li><a class="dropdown-item" href="#">1</a></li>
                                 <li><a class="dropdown-item" href="#">2</a></li>
+                                <li class="nav-item dropdown">
+                                    <a class="dropdown-item dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Modify
+                                    </a>
+                                    <ul class="dropdown-menu animated fadeIn" aria-labelledby="navbarDropdown1">
+                                        <li><a class="dropdown-item" href="#">1</a></li>
+                                        <li><a class="dropdown-item" href="#">2</a></li>
+                                    </ul>
+                                </li>
                             </ul>
                         </li>
 

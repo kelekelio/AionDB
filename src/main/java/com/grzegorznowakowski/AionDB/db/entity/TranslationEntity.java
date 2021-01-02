@@ -186,7 +186,11 @@ public class TranslationEntity {
                 loca =  (body != null) ? body : name;
         }
 
-        return loca.replaceAll("&apos;", "'");
+        if (name == null) {
+            return loca;
+        } else {
+            return loca.replaceAll("&apos;", "'");
+        }
 
     }
 }

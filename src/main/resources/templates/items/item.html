@@ -7,10 +7,10 @@
 <head></head>
 <body>
 <div class="item" th:fragment="item">
-    <div th:text="${item.id}"></div>
-    <div th:text="${item.name}"></div>
-    <div th:text="${item.description}"></div>
+    <div th:text="${item.itemEntity.id}"></div>
+    <div th:text="${item.translation}"></div>
     <div th:text="${item.descLong}"></div>
+    <div th:text="${item.price}"></div>
 </div>
 </body>
 </html>

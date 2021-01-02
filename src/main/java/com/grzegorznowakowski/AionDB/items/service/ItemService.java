@@ -28,27 +28,7 @@ public class ItemService {
     private TranslationService translationService;
 
     public ItemEntity get(Integer id) {
-
-        Locale locale = LocaleContextHolder.getLocale();
-        String code = locale.getLanguage();
-
-        ItemEntity item = itemRepository.findById(id).get();
-
-        //can not be null
-        item.setDescription(
-                translationService.findByName(item.getDescription()).getLocaString()
-            );
-
-        //can be null
-        if (item.getDescLong() != null) {
-            item.setDescLong(
-                    translationService.findByName(item.getDescLong()).getLocaString()
-            );
-        }
-
-
-
-        return item;
+        return itemRepository.findById(id).get();
     }
 
     public List<ItemEntity> findByEquipmentSlots (String equipmentSlots) {

@@ -1,4 +1,4 @@
-package com.grzegorznowakowski.AionDB.items.entity;
+package com.grzegorznowakowski.AionDB.items.object;
 
 /**
  * @author Grzegorz Nowakowski

@@ -1,20 +1,15 @@
 package com.grzegorznowakowski.AionDB.api.controller;
 
 import com.grzegorznowakowski.AionDB.items.entity.ItemEntity;
-import com.grzegorznowakowski.AionDB.items.entity.ItemIdRangeObj;
-import com.grzegorznowakowski.AionDB.items.entity.ItemTypeObj;
+import com.grzegorznowakowski.AionDB.items.object.ItemIdRangeObj;
 import com.grzegorznowakowski.AionDB.items.repository.ItemDataTablesRepository;
-import com.grzegorznowakowski.AionDB.items.repository.ItemRepository;
-import com.grzegorznowakowski.AionDB.items.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.datatables.mapping.DataTablesInput;
 import org.springframework.data.jpa.datatables.mapping.DataTablesOutput;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.web.bind.annotation.*;
 
-import javax.persistence.criteria.Expression;
 import javax.validation.Valid;
-import java.util.List;
 
 /**
  * @author Grzegorz Nowakowski
