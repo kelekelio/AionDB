@@ -17,7 +17,7 @@ public class ItemObj {
     private String descLong;
     private String price;
 
-    public ItemObj() {
+    public ItemObj() { 
     }
 
     public ItemEntity getItemEntity() {
