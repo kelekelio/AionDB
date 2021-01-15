@@ -39,9 +39,7 @@ public class ItemService {
         return itemRepository.findAllByWeaponType(weaponType);
     }
 
-    public List<ItemEntity> findAll() {
-        return itemRepository.findAll();
-    }
+
 
     public List<ItemEntity> findByArmorType(String slot) {
         return itemRepository.findAllByArmorType(slot);
