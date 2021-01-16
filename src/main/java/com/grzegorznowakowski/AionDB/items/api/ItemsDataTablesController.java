@@ -1,4 +1,4 @@
-package com.grzegorznowakowski.AionDB.api.controller;
+package com.grzegorznowakowski.AionDB.items.api;
 
 import com.grzegorznowakowski.AionDB.items.entity.ItemEntity;
 import com.grzegorznowakowski.AionDB.items.object.ItemIdRangeObj;

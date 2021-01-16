@@ -11,7 +11,7 @@ import java.util.Arrays;
 /**
  * @author Grzegorz Nowakowski
  */
-public class CountryRoutingDataSource extends AbstractRoutingDataSource {
+public class ServerRoutingDataSource extends AbstractRoutingDataSource {
 
     @Override
     protected Object determineCurrentLookupKey() {

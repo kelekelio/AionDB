@@ -18,7 +18,7 @@ import java.util.Optional;
  * @author Grzegorz Nowakowski
  */
 @RestController
-public class Controller {
+public class DungeonApiController {
 
     @Autowired
     DungeonRepository dungeonRepository;
