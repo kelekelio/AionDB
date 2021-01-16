@@ -15,6 +15,9 @@ public class ServerRoutingDataSource extends AbstractRoutingDataSource {
 
     @Override
     protected Object determineCurrentLookupKey() {
+
+
+
         ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
         HttpServletRequest request;
 
@@ -34,7 +37,9 @@ public class ServerRoutingDataSource extends AbstractRoutingDataSource {
 
         //URL parameter is present. Return the parameter value.
         if (parameter != null) {
-            return parameter;
+            if (parameter.equals("0") || parameter.equals("1")) {
+                return parameter;
+            }
         }
 
         //URL parameter is not present. Check Cookies.
