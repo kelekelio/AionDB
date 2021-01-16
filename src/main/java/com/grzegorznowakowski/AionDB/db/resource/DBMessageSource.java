@@ -28,6 +28,7 @@ public class DBMessageSource extends AbstractMessageSource {
         String loca;
 
         //if key was not found in the database (improssibruuuu~!!11), return the key
+        //possibru if DB is changed.
         if (message == null) {
             return new MessageFormat(name, locale);
         }
