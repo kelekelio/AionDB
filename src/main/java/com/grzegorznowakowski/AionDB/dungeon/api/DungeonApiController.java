@@ -25,10 +25,6 @@ public class DungeonApiController {
 
     @GetMapping("/api/dungeons")
     public List<DungeonEntity> getAllDungeons() {
-        List<DungeonEntity> dungeons = dungeonRepository.findAll();
-
-        return dungeons;
-
-
+        return dungeonRepository.findAll();
     }
 }
