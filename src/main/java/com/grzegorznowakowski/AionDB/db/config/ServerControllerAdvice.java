@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 public class ServerControllerAdvice {
 
     @ModelAttribute
-    public void myMethod(@RequestParam(value = "server", required=false) String server, HttpServletResponse response) {
+    public void setServerCookie(@RequestParam(value = "server", required=false) String server, HttpServletResponse response) {
 
         if (server != null) {
             Cookie cookie = new Cookie("AionPB.server", server);
