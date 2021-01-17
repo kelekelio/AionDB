@@ -1,7 +1,6 @@
 package com.grzegorznowakowski.AionDB.items.service;
 
-import com.grzegorznowakowski.AionDB.db.service.TranslationService;
-import com.grzegorznowakowski.AionDB.items.entity.ItemEntity;
+import com.grzegorznowakowski.AionDB.translation.service.TranslationService;
 import com.grzegorznowakowski.AionDB.items.object.ItemObj;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

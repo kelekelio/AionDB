@@ -1,9 +1,6 @@
 package com.grzegorznowakowski.AionDB.items.object;
 
-import com.grzegorznowakowski.AionDB.db.service.TranslationService;
 import com.grzegorznowakowski.AionDB.items.entity.ItemEntity;
-
-import java.text.DecimalFormat;
 
 /**
  * @author Grzegorz Nowakowski

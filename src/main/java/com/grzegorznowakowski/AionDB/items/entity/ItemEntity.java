@@ -1,7 +1,5 @@
 package com.grzegorznowakowski.AionDB.items.entity;
 
-import com.grzegorznowakowski.AionDB.db.entity.TranslationEntity;
-
 import javax.persistence.*;
 
 /**

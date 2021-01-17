@@ -1,15 +1,13 @@
 package com.grzegorznowakowski.AionDB.items.service;
 
-import com.grzegorznowakowski.AionDB.db.repository.TranslationRepository;
-import com.grzegorznowakowski.AionDB.db.service.TranslationService;
+import com.grzegorznowakowski.AionDB.translation.repository.TranslationRepository;
+import com.grzegorznowakowski.AionDB.translation.service.TranslationService;
 import com.grzegorznowakowski.AionDB.items.entity.ItemEntity;
 import com.grzegorznowakowski.AionDB.items.repository.ItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Locale;
 
 /**
  * @author Grzegorz Nowakowski

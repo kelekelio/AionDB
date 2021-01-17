@@ -1,6 +1,6 @@
 package com.grzegorznowakowski.AionDB.items.controller;
 
-import com.grzegorznowakowski.AionDB.db.service.TranslationService;
+import com.grzegorznowakowski.AionDB.translation.service.TranslationService;
 import com.grzegorznowakowski.AionDB.items.object.ItemTypeObj;
 import com.grzegorznowakowski.AionDB.items.object.ItemObj;
 import com.grzegorznowakowski.AionDB.items.service.ItemBuilderService;

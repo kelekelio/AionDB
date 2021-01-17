@@ -178,6 +178,30 @@
             });
         });
 
+        $('table#ajaxTableDungeons').each(function() {
+            var type = $(this).attr("type");
+            var source = "/dungeonsajax";
+            var DataTable = $(this).DataTable( {
+                ajax: {
+                    'url': source,
+                    'type': 'GET',
+                    'data': flatten
+                },
+                serverSide: true,
+                columns: [
+                    {
+                        data: 'id'
+                    },
+                    {
+                        data: 'description'
+                    },
+                    {
+                        data: 'race'
+                    }
+                ]
+            });
+        });
+
 
     </script>
 </div>

@@ -1,9 +1,8 @@
 package com.grzegorznowakowski.AionDB.dungeon.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import net.minidev.json.annotate.JsonIgnore;
+
+import javax.persistence.*;
 
 /**
  * @author Grzegorz Nowakowski
@@ -19,9 +18,17 @@ public class DungeonEntity {
     @Column
     private String name;
 
-    public DungeonEntity(Integer id, String name) {
+    @Column
+    private String description;
+
+    @Column
+    private String race;
+
+    public DungeonEntity(Integer id, String name, String description, String race) {
         this.id = id;
         this.name = name;
+        this.description = description;
+        this.race = race;
     }
 
     public DungeonEntity() {
@@ -41,5 +48,21 @@ public class DungeonEntity {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getRace() {
+        return race;
+    }
+
+    public void setRace(String race) {
+        this.race = race;
     }
 }

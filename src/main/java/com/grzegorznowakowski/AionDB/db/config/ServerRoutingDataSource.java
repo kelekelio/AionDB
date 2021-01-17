@@ -1,5 +1,6 @@
 package com.grzegorznowakowski.AionDB.db.config;
 
+import com.grzegorznowakowski.AionDB.db.object.Settings;
 import org.springframework.jdbc.datasource.lookup.AbstractRoutingDataSource;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
@@ -16,50 +17,7 @@ public class ServerRoutingDataSource extends AbstractRoutingDataSource {
     @Override
     protected Object determineCurrentLookupKey() {
 
-
-
-        ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
-        HttpServletRequest request;
-
-        //TODO: clean this.
-        //first check if url param is present. That needs to take priority.
-        //then check if cookie exists and what is there.
-        //if neither is preset, return 0.
-
-        if (attr != null) {
-            request = attr.getRequest();
-        } else {
-            return "0";
-        }
-
-        String parameter = request.getParameter("server");
-        Cookie[] cookies = request.getCookies();
-
-        //URL parameter is present. Return the parameter value.
-        if (parameter != null) {
-            if (parameter.equals("0") || parameter.equals("1")) {
-                return parameter;
-            }
-        }
-
-        //URL parameter is not present. Check Cookies.
-        if (cookies != null) {
-            //if AionPB.server cookie exists, return value as long as it's 0 or 1. Otherwise return 0.
-                String value = Arrays.stream(cookies)
-                        .filter(c -> c.getName().equals("AionPB.server"))
-                        .findFirst()
-                        .map(Cookie::getValue)
-                        .orElse("0");
-
-
-                if (value.equals("0") || value.equals("1")) {
-                    return value;
-                } else {
-                    return "0";
-                }
-        }
-
-        return "0";
+        return Settings.getServerId();
 
     }
 

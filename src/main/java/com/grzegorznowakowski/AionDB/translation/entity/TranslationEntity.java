@@ -1,5 +1,6 @@
-package com.grzegorznowakowski.AionDB.db.entity;
+package com.grzegorznowakowski.AionDB.translation.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.context.i18n.LocaleContextHolder;
 
 import javax.persistence.Column;
@@ -168,6 +169,7 @@ public class TranslationEntity {
         this.cn = cn;
     }
 
+    @JsonIgnore
     public String getLocaString () {
 
         String loca;
