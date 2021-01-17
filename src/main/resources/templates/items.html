@@ -31,12 +31,16 @@
                     <div class="card">
                         <div class="stat-widget-two card-body">
                             <div class="stat-content">
-                                <table id="ajaxTable" class="table" th:attr="type=${itemType.type}">
+                                <table id="ajaxTable" class="table" th:attr="type=${itemType.type}" >
                                     <thead>
                                     <tr>
                                         <th>ID</th>
                                         <th class="no-sorting"></th>
                                         <th style="width: 100%">Name</th>
+                                        <th class="nowrap">Level</th>
+                                        <th class="nowrap">Type</th>
+                                        <th class="nowrap">E.Type</th>
+                                        <th class="nowrap">Version</th>
                                     </tr>
                                     </thead>
                                 </table>

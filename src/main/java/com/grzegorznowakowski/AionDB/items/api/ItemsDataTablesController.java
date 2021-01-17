@@ -2,10 +2,15 @@ package com.grzegorznowakowski.AionDB.items.api;
 
 import com.grzegorznowakowski.AionDB.items.entity.ItemEntity;
 import com.grzegorznowakowski.AionDB.items.object.ItemIdRangeObj;
+import com.grzegorznowakowski.AionDB.items.object.ItemObj;
 import com.grzegorznowakowski.AionDB.items.repository.ItemDataTablesRepository;
+import com.grzegorznowakowski.AionDB.translation.entity.TranslationEntity;
+import com.grzegorznowakowski.AionDB.translation.service.TranslationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.datatables.mapping.Column;
 import org.springframework.data.jpa.datatables.mapping.DataTablesInput;
 import org.springframework.data.jpa.datatables.mapping.DataTablesOutput;
+import org.springframework.data.jpa.datatables.mapping.Search;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,10 +25,18 @@ public class ItemsDataTablesController {
     @Autowired
     private ItemDataTablesRepository itemDataTablesRepository;
 
+    @Autowired
+    private TranslationService translationService;
+
 
     @RequestMapping(value = {"/itemajax", "/itemajax/{type}"}, method = RequestMethod.GET)
     public DataTablesOutput<ItemEntity> list(@PathVariable(required = false) String type, @Valid DataTablesInput input) {
 
+
+        String code = TranslationEntity.getLocaCode();
+        //extra column added to the search results
+        input.getColumns().add(7, new Column("ko", null, true, false, new Search(null, false)));
+        input.getColumns().add(8, new Column(code, null, true, false, new Search(null, false)));
 
         ItemIdRangeObj idRange = new ItemIdRangeObj();
         idRange.setIdRangeBasedOnType(type);
@@ -64,8 +77,17 @@ public class ItemsDataTablesController {
 
 
 
+        DataTablesOutput<ItemEntity> data = itemDataTablesRepository.findAll(input, itemEntitySpecification);
+        data.getData().forEach(itemEntity -> itemEntity
+                .setIconName(
+                        ItemObj.finalIconLink(itemEntity.getIconName())
+                ) );
+        data.getData().forEach(itemEntity -> itemEntity.setDescription(
+                translationService.findByName(itemEntity.getDescription()).getLocaString()
+                )
+        );
 
-        return itemDataTablesRepository.findAll(input, itemEntitySpecification);
+        return data;
     }
 
     /*
@@ -77,7 +99,10 @@ public class ItemsDataTablesController {
 
     @RequestMapping(value = "/itemajax", method = RequestMethod.POST)
     public DataTablesOutput<ItemEntity> listPOST(@Valid @RequestBody DataTablesInput input) {
-        return itemDataTablesRepository.findAll(input);
+        System.out.println(input.getColumns());
+        DataTablesOutput<ItemEntity> items = itemDataTablesRepository.findAll(input);
+
+        return items;
     }
 
 

@@ -13,6 +13,7 @@ public class ItemObj {
     private String description;
     private String descLong;
     private String price;
+    private String iconName;
 
     public ItemObj() { 
     }
@@ -47,6 +48,23 @@ public class ItemObj {
 
     public void setPrice(String price) {
         this.price = price;
+    }
+
+    public String getIconName() {
+        return iconName;
+    }
+
+    public void setIconName(String iconName) {
+        this.iconName = iconName;
+    }
+
+    public static String finalIconLink(String iconName) {
+
+        return "<img class=\"thumb\" src=\"https://aionpowerbook.com/item/icon/" + iconFix(iconName) + ".png\" width=\"37\" height=\"37\" alt=\"\">";
+    }
+
+    public static String iconFix(String iconName) {
+        return iconName.replaceAll(".dds", "").toLowerCase();
     }
 
 

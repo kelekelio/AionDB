@@ -1,5 +1,8 @@
 package com.grzegorznowakowski.AionDB.items.entity;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.grzegorznowakowski.AionDB.translation.entity.TranslationEntity;
+
 import javax.persistence.*;
 
 /**
@@ -39,6 +42,30 @@ public class ItemEntity {
 
     @Column
     private Integer price;
+
+    @Column
+    private Integer level;
+
+    @Column(name = "item_type")
+    private String itemType;
+
+    @Column(name = "driven_enchant_type")
+    private String drivenEnchantType;
+
+    @Column(name = "client_version")
+    private String clientVersion;
+
+
+
+    @Column(name = "search_ko")
+    private String ko;
+
+    @Column(name = "search_en")
+    private String en;
+
+    @Column(name = "search_de")
+    private String de;
+
 
 
 
@@ -140,4 +167,59 @@ public class ItemEntity {
         this.price = price;
     }
 
+    public String getKo() {
+        return ko;
+    }
+
+    public void setKo(String ko) {
+        this.ko = ko;
+    }
+
+    public String getEn() {
+        return en;
+    }
+
+    public void setEn(String en) {
+        this.en = en;
+    }
+
+    public String getDe() {
+        return de;
+    }
+
+    public void setDe(String de) {
+        this.de = de;
+    }
+
+    public Integer getLevel() {
+        return level;
+    }
+
+    public void setLevel(Integer level) {
+        this.level = level;
+    }
+
+    public String getItemType() {
+        return itemType;
+    }
+
+    public void setItemType(String itemType) {
+        this.itemType = itemType;
+    }
+
+    public String getClientVersion() {
+        return clientVersion;
+    }
+
+    public void setClientVersion(String clientVersion) {
+        this.clientVersion = clientVersion;
+    }
+
+    public String getDrivenEnchantType() {
+        return drivenEnchantType;
+    }
+
+    public void setDrivenEnchantType(String drivenEnchantType) {
+        this.drivenEnchantType = drivenEnchantType;
+    }
 }

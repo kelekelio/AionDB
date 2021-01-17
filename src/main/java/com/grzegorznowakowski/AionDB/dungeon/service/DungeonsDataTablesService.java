@@ -24,7 +24,11 @@ public class DungeonsDataTablesService {
 
         DataTablesOutput<DungeonEntity> dungeons = dungeonsDataTablesRepository.findAll(input);
 
-        dungeons.getData().forEach(dungeonEntity -> dungeonEntity.setDescription(translationService.findByName(dungeonEntity.getDescription()).getLocaString()) );
+        dungeons.getData().forEach(dungeonEntity -> dungeonEntity
+                .setDescription(
+                        translationService.findByName(dungeonEntity.getDescription()).getLocaString()
+                )
+        );
         dungeons.getData().forEach(dungeonEntity -> dungeonEntity.setRace("<span class=\"pc_light\"></span> <span class=\"pc_dark\"></span>"));
 
         return dungeons;

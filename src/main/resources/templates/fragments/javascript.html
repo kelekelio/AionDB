@@ -156,23 +156,35 @@
                     'type': 'GET',
                     'data': flatten
                 },
+                language: {
+                    processing : '<img src=\'/images/processing.gif\'>'
+                },
                 serverSide: true,
+                processing: true,
                 columns: [
                     {
                         data: 'id'
                     },
                     {
-                        data: 'iconName',
+                        data: 'iconName'
+                    },
+                    {
+                        data: 'description',
                         render: function (data, type, row, meta) {
-                            var icon = row['iconName'].toLowerCase().replaceAll(".dds", "");
-                            return "<img class='thumb' src='https://aionpowerbook.com/item/icon_c/" + icon + ".png' width='37' height='37' >";
+                            return "<a href='/item/" + row['id'] + "' class='col_" + row['quality'] + " bold tooltipzy ' tooltipid='" + row['id'] + "' >"+row['description']+"</a><span style=\"display: block;  float: right;\" class=\"itempreviewlist tooltipstered\" mesh=\"da_r002\" meshid=\"100200001\"><img src=\"https://aionpowerbook.com/powerbook/skins/MonoBook/img/itemfeatures/itempreview2.png\"></span>";
                         }
                     },
                     {
-                        data: 'name',
-                        render: function (data, type, row, meta) {
-                            return "<a href='/item/" + row['id'] + "' class='col_" + row['quality'] + " bold tooltipzy ' tooltipid='" + row['id'] + "' >"+row['name']+"</a>";
-                        }
+                        data: 'level'
+                    },
+                    {
+                        data: 'itemType'
+                    },
+                    {
+                        data: 'drivenEnchantType'
+                    },
+                    {
+                        data: 'clientVersion'
                     }
                 ]
             });
