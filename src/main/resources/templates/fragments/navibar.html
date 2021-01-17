@@ -163,6 +163,15 @@
                     <a class="nav-link disabled" href="#" data-th-text="#{server_id}"></a>
                 </li>
                 <li class="nav-item">
+                    <span class="restrictionTip" title="Live Server">
+                        <label for="alive" style="font-size:15px">&nbsp;&nbsp;Live:&nbsp;&nbsp;</label><input name="aionclassic" type="radio" value="0" th:checked="#{server_id} == '0'" id="alive">
+                    </span>
+                    <span class="restrictionTip" title="Classic Server">
+                        <label for="aclassic" style="font-size:15px">&nbsp;&nbsp;Classic:&nbsp;&nbsp;</label><input name="aionclassic" type="radio" value="1" th:checked="#{server_id} == '1'" id="aclassic">
+                    </span>
+
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" th:href="@{/dungeons}" data-th-text="#{STR_TOOLTIP_INDUN_NAME}"></a>
                 </li>
             </ul>

@@ -34,8 +34,10 @@ public class ItemEntity {
     @Column(name = "armor_type")
     private String armorType;
 
+    @Column
     private String quality;
 
+    @Column
     private Integer price;
 
 
