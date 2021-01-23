@@ -1,6 +1,7 @@
 package com.grzegorznowakowski.AionDB.translation.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.grzegorznowakowski.AionDB.db.object.Settings;
 import org.springframework.context.i18n.LocaleContextHolder;
 
 import javax.persistence.*;
@@ -170,7 +171,7 @@ public class TranslationEntity {
     public String getLocaString () {
 
         String loca;
-        String code = getLocaCode();
+        String code = Settings.getLocaCode();
 
         switch (code) {
             case "en":
@@ -189,11 +190,5 @@ public class TranslationEntity {
             return loca.replaceAll("&apos;", "'");
         }
 
-    }
-
-    @JsonIgnore
-    @Transient
-    public static String getLocaCode() {
-        return LocaleContextHolder.getLocale().getLanguage();
     }
 }

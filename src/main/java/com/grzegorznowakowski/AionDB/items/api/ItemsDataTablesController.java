@@ -1,5 +1,6 @@
 package com.grzegorznowakowski.AionDB.items.api;
 
+import com.grzegorznowakowski.AionDB.db.object.Settings;
 import com.grzegorznowakowski.AionDB.items.entity.ItemEntity;
 import com.grzegorznowakowski.AionDB.items.object.ItemIdRangeObj;
 import com.grzegorznowakowski.AionDB.items.object.ItemObj;
@@ -33,7 +34,7 @@ public class ItemsDataTablesController {
     public DataTablesOutput<ItemEntity> list(@PathVariable(required = false) String type, @Valid DataTablesInput input) {
 
 
-        String code = TranslationEntity.getLocaCode();
+        String code = Settings.getLocaCode();
         //extra column added to the search results
         input.getColumns().add(7, new Column("ko", null, true, false, new Search(null, false)));
         input.getColumns().add(8, new Column(code, null, true, false, new Search(null, false)));

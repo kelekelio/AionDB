@@ -1,5 +1,6 @@
 package com.grzegorznowakowski.AionDB.items.service;
 
+import com.grzegorznowakowski.AionDB.items.entity.ItemEntity;
 import com.grzegorznowakowski.AionDB.translation.service.TranslationService;
 import com.grzegorznowakowski.AionDB.items.object.ItemObj;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,11 +20,9 @@ public class ItemBuilderService {
     @Autowired
     private TranslationService translationService;
 
-
     public ItemObj itemBuilder(int id) {
         ItemObj itemObj = new ItemObj();
         itemObj.setItemEntity(itemService.get(id));
-        itemObj.setPrice(itemObj.getItemEntity().getPrice().toString());
         itemObj.setDescription(translationService.findByName(itemObj.getItemEntity().getDescription()).getLocaString());
         itemObj.setDescLong(translationService.findByName(itemObj.getItemEntity().getDescLong()).getLocaString());
         itemObj.setPrice(numberFormat(itemObj.getItemEntity().getPrice()));
@@ -33,7 +32,7 @@ public class ItemBuilderService {
         return itemObj;
     }
 
-    public String numberFormat (Integer number) {
+    public static String numberFormat (Integer number) {
 
         if (number == null) {
             return null;

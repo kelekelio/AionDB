@@ -1,5 +1,6 @@
 package com.grzegorznowakowski.AionDB.db.object;
 
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
@@ -76,5 +77,9 @@ public class Settings {
         }
 
         return "0";
+    }
+
+    public static String getLocaCode() {
+        return LocaleContextHolder.getLocale().getLanguage();
     }
 }
