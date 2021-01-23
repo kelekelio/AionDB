@@ -5,9 +5,9 @@
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
       layout:decorate="~{layouts/layout}">
 <head></head>
-<body style="background-image: url('mask.png');background-repeat: no-repeat; height:510px !important; width:410px; " >
+<body style="background-image: url('/images/mask.png');background-repeat: no-repeat; height:510px !important; width:410px; " >
 <div style="padding-top:50px; padding-left:10px;">
-    <div  style="display:block; width:375px; height:420px; overflow-y:auto "><div id="includedContent" th:text="${quest.questText}"></div>
+    <div  style="display:block; width:375px; height:420px; overflow-y:auto "><div id="includedContent" data-th-utext="${quest.questText}"></div>
 
 
     </div>

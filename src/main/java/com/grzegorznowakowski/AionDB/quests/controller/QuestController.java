@@ -6,6 +6,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.xml.sax.SAXException;
+
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.xpath.XPathExpressionException;
+import java.io.IOException;
 
 /**
  * @author Grzegorz Nowakowski
@@ -14,9 +19,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class QuestController {
 
     @RequestMapping({"/qtext/{id}"})
-    public String itemView(@PathVariable(value = "id") Integer id, Model model) {
+    public String itemView(@PathVariable(value = "id") Integer id, Model model) throws ParserConfigurationException, SAXException, XPathExpressionException, IOException {
 
-        QuestObj quest = new QuestObj(id);
+        QuestObj quest = new QuestObj(1);
 
         model.addAttribute("quest", quest);
         return "quests/qtext";

@@ -29,6 +29,7 @@ import org.eclipse.persistence.jaxb.JAXBContextFactory;
 import org.w3c.dom.CDATASection;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
@@ -40,23 +41,14 @@ public class MainTest {
 
 
     public static void main(String[] args) throws JAXBException, IOException, ParserConfigurationException, SAXException, XPathExpressionException {
-        MainTest app = new MainTest();
 
-        String fileName = "quest_qempty.html";
+        int id = 2946;
+        String server = "0";
+        String code = "ko";
 
-        //JAXBContext jc = JAXBContext.newInstance(Customer.class);
-        //Unmarshaller unmarshaller = jc.createUnmarshaller();
-
-        //HtmlPages quest = (HtmlPages) unmarshaller.unmarshal(fileName);
+        String conents = new String(Files.readAllBytes(Paths.get("P:\\Coding\\AionDB\\src\\main\\resources\\static\\server\\" + server + "\\quest\\" + code + "\\quest_q2946.html")));
 
 
-
-        FileInputStream xmlInputStream = new FileInputStream("P:\\quest_qempty.html");
-
-        String conents = new String(Files.readAllBytes(Paths.get("P:\\quest_qempty.html")));
-
-        //Unmarshaller unmarshaller = jc.createUnmarshaller();
-        //Customer quest = (Customer) unmarshaller.unmarshal(xmlInputStream);
 
         conents = conents.replaceAll("<Contents cdata=\"true\">", "<Content><![CDATA[");
         conents = conents.replaceAll("</Contents>", "]]></Content>");
@@ -69,12 +61,40 @@ public class MainTest {
         XPath xPath = XPathFactory.newInstance().newXPath();
         String expression = "/HtmlPages/HtmlPage[@name=" + "'quest_summary'" + "]";
 
-        Node node = (Node) xPath.compile(expression).evaluate(xmlDocument, XPathConstants.NODE);
+        //Node node = (Node) xPath.compile(expression).evaluate(xmlDocument, XPathConstants.NODE);
 
         //System.out.println(node.getTextContent());
 
-        System.out.println(getNodeString(xmlDocument, expression));
-        System.out.println(getNodeString(xmlDocument, "/HtmlPages/HtmlPage[@name='select2_1']"));
+        //System.out.println(getNodeString(xmlDocument, expression));
+
+        expression = "//HtmlPage[starts-with(@name, 'select1')]";
+
+        //System.out.println(getNodeString(xmlDocument, "//HtmlPage[starts-with(@name, 'select1')]"));
+
+        //System.out.println(getNodeList(xmlDocument, expression));
+
+
+        String questHtml =
+                getNodeList(xmlDocument, "//HtmlPage[starts-with(@name, 'select1')]") +
+                getNodeList(xmlDocument, "//HtmlPage[starts-with(@name, 'select2')]") +
+                getNodeList(xmlDocument, "//HtmlPage[starts-with(@name, 'select3')]") +
+                getNodeList(xmlDocument, "//HtmlPage[starts-with(@name, 'select4')]") +
+                getNodeList(xmlDocument, "//HtmlPage[starts-with(@name, 'select5')]") +
+                getNodeList(xmlDocument, "//HtmlPage[starts-with(@name, 'select6')]") +
+                getNodeList(xmlDocument, "//HtmlPage[starts-with(@name, 'select7')]") +
+                getNodeList(xmlDocument, "//HtmlPage[starts-with(@name, 'select8')]") +
+                getNodeList(xmlDocument, "//HtmlPage[starts-with(@name, 'select9')]") +
+                getNodeList(xmlDocument, "//HtmlPage[starts-with(@name, 'select10')]") +
+                getNodeList(xmlDocument, "//HtmlPage[starts-with(@name, 'select11')]") +
+                getNodeList(xmlDocument, "//HtmlPage[starts-with(@name, 'select12')]") +
+                getNodeList(xmlDocument, "//HtmlPage[starts-with(@name, 'select13')]") +
+                getNodeList(xmlDocument, "//HtmlPage[starts-with(@name, 'select_success')]") +
+                getNodeList(xmlDocument, "//HtmlPage[starts-with(@name, 'select_quest_reward')]") + "Completion: " +
+                getNodeList(xmlDocument, "//HtmlPage[starts-with(@name, 'quest_complete')]")
+                ;
+
+
+        System.out.println(questHtml);
 
 
     }
@@ -82,7 +102,27 @@ public class MainTest {
     public static String getNodeString (Document xmlDocument, String expression) throws XPathExpressionException {
         XPath xPath = XPathFactory.newInstance().newXPath();
         Node node = (Node) xPath.compile(expression).evaluate(xmlDocument, XPathConstants.NODE);
-        return node.getTextContent();
+
+        if (node == null) {
+            return "";
+        } else {
+            return node.getTextContent();
+        }
+    }
+
+    public static String getNodeList (Document xmlDocument, String expression) throws XPathExpressionException {
+
+        StringBuilder questHtml = new StringBuilder();
+
+        XPath xPath = XPathFactory.newInstance().newXPath();
+        NodeList nl = (NodeList) xPath.compile(expression).evaluate(xmlDocument, XPathConstants.NODESET);
+
+        for(int i=0; i < nl.getLength() ; i++) {
+            Node node = nl.item(i);
+            //System.out.println(node.getTextContent());
+            questHtml.append(node.getTextContent());
+        }
+        return questHtml.toString();
     }
 
     private static String nodeToString(Node node) {
