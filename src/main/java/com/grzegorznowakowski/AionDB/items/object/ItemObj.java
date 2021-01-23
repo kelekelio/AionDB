@@ -1,5 +1,6 @@
 package com.grzegorznowakowski.AionDB.items.object;
 
+import com.grzegorznowakowski.AionDB.db.object.Settings;
 import com.grzegorznowakowski.AionDB.items.entity.ItemEntity;
 
 /**
@@ -60,7 +61,7 @@ public class ItemObj {
 
     public static String finalIconLink(String iconName) {
 
-        return "<img class=\"thumb\" src=\"https://aionpowerbook.com/item/icon/" + iconFix(iconName) + ".png\" width=\"37\" height=\"37\" alt=\"\">";
+        return "<img class=\"thumb\" src=\"/server/" + Settings.getServerId() + "/item/icon/" + iconFix(iconName) + ".png\" width=\"37\" height=\"37\" alt=\"\">";
     }
 
     public static String iconFix(String iconName) {
