@@ -8,3 +8,10 @@
 .col_ancient, a.col_ancient{color:#f1a12e !important; text-decoration:none; letter-spacing:0px; font-weight:normal !important; }
 .col_finality, a.col_finality{color:#e14141 !important; text-decoration:none; letter-spacing:0px; font-weight:normal !important; }
 .col_relic, a.col_relic{color:#dd43ef !important; text-decoration:none; letter-spacing:0px; font-weight:normal !important; }
+
+body.questWindow {
+    background-image: url(/images/mask.png);
+    background-repeat: no-repeat;
+    height:510px !important;
+    width:410px;
+}

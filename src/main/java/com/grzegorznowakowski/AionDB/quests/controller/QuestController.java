@@ -11,6 +11,7 @@ import org.xml.sax.SAXException;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.xpath.XPathExpressionException;
 import java.io.IOException;
+import java.net.URISyntaxException;
 
 /**
  * @author Grzegorz Nowakowski
@@ -19,9 +20,9 @@ import java.io.IOException;
 public class QuestController {
 
     @RequestMapping({"/qtext/{id}"})
-    public String itemView(@PathVariable(value = "id") Integer id, Model model) throws ParserConfigurationException, SAXException, XPathExpressionException, IOException {
+    public String itemView(@PathVariable(value = "id") Integer id, Model model) throws ParserConfigurationException, SAXException, XPathExpressionException, IOException, URISyntaxException {
 
-        QuestObj quest = new QuestObj(1);
+        QuestObj quest = new QuestObj(id);
 
         model.addAttribute("quest", quest);
         return "quests/qtext";

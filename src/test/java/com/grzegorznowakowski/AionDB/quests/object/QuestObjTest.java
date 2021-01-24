@@ -4,6 +4,7 @@ import com.grzegorznowakowski.AionDB.db.object.Settings;
 import org.junit.jupiter.api.Test;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
@@ -34,6 +35,13 @@ class QuestObjTest {
 
 
         System.out.println(text);
+    }
+
+    @Test
+    void checkIfFileExists () {
+        String filePath = "static/server/common/quest/quest_qempty.html";
+        File f = new File(filePath);
+        System.out.println(f.exists());
     }
 
 

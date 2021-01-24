@@ -15,6 +15,8 @@ import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
 import java.io.*;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -26,13 +28,15 @@ import java.util.stream.Collectors;
 public class QuestObj {
 
     private String questText;
+    private String questSummary;
 
-    public QuestObj(int id) throws ParserConfigurationException, IOException, SAXException, XPathExpressionException {
+
+    public QuestObj(int id) throws ParserConfigurationException, IOException, SAXException, XPathExpressionException, URISyntaxException {
 
         DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = builderFactory.newDocumentBuilder();
 
-        Document xmlDocument = builder.parse(getXmlInputSource(1));
+        Document xmlDocument = builder.parse(getXmlInputSource(id));
 
         this.questText =
                 getNodeList(xmlDocument, "//HtmlPage[starts-with(@name, 'select1')]") +
@@ -53,6 +57,8 @@ public class QuestObj {
                         getNodeList(xmlDocument, "//HtmlPage[starts-with(@name, 'quest_complete')]")
                 ;
 
+        this.questSummary = getNodeList(xmlDocument, "//HtmlPage[starts-with(@name, 'quest_summary')]");
+
 
     }
 
@@ -67,52 +73,44 @@ public class QuestObj {
         this.questText = questText;
     }
 
+    public String getQuestSummary() {
+        return questSummary;
+    }
 
-    public InputStream getFileFromResourceAsStream(int id) {
+    public void setQuestSummary(String questSummary) {
+        this.questSummary = questSummary;
+    }
 
+    private InputSource getXmlInputSource (int id) throws IOException, URISyntaxException {
+        return new InputSource(new StringReader(putXmlIntoString(id)));
+    }
+
+
+    public static String putXmlIntoString (int id) throws URISyntaxException, IOException {
         String server = Settings.getServerId();
         String code = Settings.getLocaCode();
 
-        String fileName = "static/server/" + server + "/quest/" + code + "/quest_q" + id + ".html";
+        String filePath = "static/server/" + server + "/quest/" + code + "/quest_q" + id + ".html";
+        URL res = QuestObj.class.getClassLoader().getResource(filePath);
 
-        // The class loader that loaded the class
-        ClassLoader classLoader = getClass().getClassLoader();
-        InputStream inputStream = classLoader.getResourceAsStream(fileName);
+        if (res == null) {
+            filePath = "static/server/" + server + "/quest/ko/quest_q" + id + ".html";
+            res = QuestObj.class.getClassLoader().getResource(filePath);
 
-        // the stream holding the file content
-        if (inputStream == null) {
-
-            //file was not found, load korean version (default)
-            fileName = "static/server/" + server + "/quest/ko/quest_q" + id + ".html";
-            inputStream = classLoader.getResourceAsStream(fileName);
-
-            if (inputStream == null) {
-                //korean file not found, load empty quest text file. this file needs to be available.
-                fileName = "static/server/common/quest/quest_qempty.html";
-                return classLoader.getResourceAsStream(fileName);
-            } else {
-                return inputStream;
+            if (res == null) {
+                filePath = "static/server/common/quest/quest_qempty.html";
+                res = QuestObj.class.getClassLoader().getResource(filePath);
             }
-        } else {
-            return inputStream;
         }
 
-    }
-
-    private InputSource getXmlInputSource (int id) throws IOException {
-        String server = "0";
-        String code = "ko";
-
-        String conents = new String(Files.readAllBytes(Paths.get("P:\\Coding\\AionDB\\src\\main\\resources\\static\\server\\" + server + "\\quest\\" + code + "\\quest_q2946.html")));
+        String conents = new String(Files.readAllBytes(Paths.get(res.toURI())));
 
         conents = conents.replaceAll("<Contents cdata=\"true\">", "<Content><![CDATA[");
         conents = conents.replaceAll("</Contents>", "]]></Content>");
 
-        InputSource is = new InputSource(new StringReader(conents));
-
-        return is;
-
+        return conents;
     }
+
 
     public static String getNodeString (Document xmlDocument, String expression) throws XPathExpressionException {
         XPath xPath = XPathFactory.newInstance().newXPath();
@@ -134,7 +132,6 @@ public class QuestObj {
 
         for(int i=0; i < nl.getLength() ; i++) {
             Node node = nl.item(i);
-            //System.out.println(node.getTextContent());
             questHtml.append(node.getTextContent());
         }
         return questHtml.toString();
