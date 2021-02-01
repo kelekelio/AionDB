@@ -4,6 +4,7 @@ import com.grzegorznowakowski.AionDB.assemble.entity.AssembleEntity;
 import com.grzegorznowakowski.AionDB.assemble.entity.AssemblePartsEntity;
 import com.grzegorznowakowski.AionDB.assemble.repository.AssemblePartsRepository;
 import com.grzegorznowakowski.AionDB.assemble.repository.AssembleRepository;
+import com.grzegorznowakowski.AionDB.items.api.ItemApiController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -34,6 +35,14 @@ public class AssembleApiController {
         //assembleEntity.ifPresent(assembleEntity1 -> assembleEntity.get().setAssembleParts(assemblePartsRepository.findAllByName(name)));
 
         return assembleEntity.map(AssembleEntity -> new ResponseEntity<>(AssembleEntity, HttpStatus.OK)).orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
+
+    }
+
+    @GetMapping("/api/assemble/{column}/{value}")
+    public List<AssembleEntity> getAssembleByColumnAndValue(@PathVariable("column") String column, @PathVariable("value") String value) {
+
+        return assembleRepository.findAll(ItemApiController.byColumnNameAndValue(column, value));
+
 
     }
 
