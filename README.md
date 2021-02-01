@@ -26,3 +26,19 @@ REQUIRED:
 1. Upload Aion Item icons to \src\main\resources\static\server\0\item\icon (for every supported server)
 2. Uload Quest HTML files to P:\Coding\AionDB\src\main\resources\static\server\0\quest\* (for every language and supported server)
 3. Upload skill icons to \src\main\resources\static\server\0\skill\icon (for every supported server)
+
+
+APIs:
+1. Item
+  - /api/item/{id}
+  - /api/item/{column}/{value}
+  
+2. Translation
+  - /api/translation/{name}
+  
+3. Dungeons (lists all dungeons)
+  - /api/dungeons
+  
+4. Assemble
+  - /api/assemble/{name}
+  - /api/assemble/{column}/{name}
