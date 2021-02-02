@@ -8,6 +8,9 @@ import java.io.File;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
+import java.util.regex.MatchResult;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -59,5 +62,56 @@ class QuestObjTest {
         }
 
     }
+
+
+    @Test
+    void matchingDictionaryLinkInHTMLString() {
+
+        String test = "TEST 123";
+        Pattern r = Pattern.compile("(?<login>\\w+) (?<id>\\d+)");
+
+
+
+
+        String subjectString = "그새 [%dic:STR_DIC_MLA116]%을 처치하고 왔나? [%dic:STR_DIC_MLA116]% 보기보단 제법인걸.";
+
+        StringBuffer resultString = new StringBuffer();
+        Pattern regex = Pattern.compile("\\[%dic:(?<translation>[a-z_0-9]+)\\]%", Pattern.CASE_INSENSITIVE);
+        Matcher regexMatcher = regex.matcher(subjectString);
+
+
+        Matcher matcher = r.matcher(test);
+
+        if (regexMatcher.find()) {
+
+            System.out.println(regexMatcher.group("translation"));
+        }
+
+        //System.out.println(regexMatcher.group("translation"));
+
+
+        while (regexMatcher.find()) {
+            // You can vary the replacement text for each match on-the-fly
+            System.out.println("resultString");
+            regexMatcher.appendReplacement(resultString, "replacement");
+        }
+        regexMatcher.appendTail(resultString);
+        System.out.println(resultString);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }
