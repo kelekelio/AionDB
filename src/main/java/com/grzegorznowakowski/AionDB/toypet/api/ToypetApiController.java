@@ -1,13 +1,7 @@
 package com.grzegorznowakowski.AionDB.toypet.api;
 
-import com.grzegorznowakowski.AionDB.toypet.entity.ToypetItemEntity;
-import com.grzegorznowakowski.AionDB.toypet.entity.ToypetLootingEntity;
-import com.grzegorznowakowski.AionDB.toypet.entity.ToypetMerchantEntity;
-import com.grzegorznowakowski.AionDB.toypet.entity.ToypetWarehouseEntity;
-import com.grzegorznowakowski.AionDB.toypet.repository.ToypetItemRepository;
-import com.grzegorznowakowski.AionDB.toypet.repository.ToypetLootingRepository;
-import com.grzegorznowakowski.AionDB.toypet.repository.ToypetMerchantRepository;
-import com.grzegorznowakowski.AionDB.toypet.repository.ToypetWarehouseRepository;
+import com.grzegorznowakowski.AionDB.toypet.entity.*;
+import com.grzegorznowakowski.AionDB.toypet.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -31,6 +25,8 @@ public class ToypetApiController {
     ToypetLootingRepository lootingRepository;
     @Autowired
     ToypetItemRepository toypetItemRepository;
+    @Autowired
+    ToypetFeedRepository toypetFeedRepository;
 
     @GetMapping("/api/toypet/warehouse/{name}")
     public ResponseEntity<ToypetWarehouseEntity> getToypetWarehouseByName(@PathVariable("name") String name) {
@@ -54,6 +50,12 @@ public class ToypetApiController {
     public ResponseEntity<ToypetItemEntity> getToypetItemByName(@PathVariable("name") String name) {
         Optional<ToypetItemEntity> entity = toypetItemRepository.findByName(name);
         return entity.map(ItemEntity -> new ResponseEntity<>(ItemEntity, HttpStatus.OK)).orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
+
+    @GetMapping("/api/toypet/feed/{name}")
+    public ResponseEntity<ToypetFeedEntity> getToypetFeedByName(@PathVariable("name") String name) {
+        Optional<ToypetFeedEntity> entity = toypetFeedRepository.findByName(name);
+        return entity.map(ToypetFeedEntity -> new ResponseEntity<>(ToypetFeedEntity, HttpStatus.OK)).orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
 
