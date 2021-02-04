@@ -1,12 +1,13 @@
 package com.grzegorznowakowski.AionDB.toypet.api;
 
-import com.grzegorznowakowski.AionDB.assemble.entity.AssembleEntity;
-import com.grzegorznowakowski.AionDB.toypet.entity.LootingEntity;
-import com.grzegorznowakowski.AionDB.toypet.entity.MerchantEntity;
-import com.grzegorznowakowski.AionDB.toypet.entity.WarehouseEntity;
-import com.grzegorznowakowski.AionDB.toypet.repository.LootingRepository;
-import com.grzegorznowakowski.AionDB.toypet.repository.MerchantRepository;
-import com.grzegorznowakowski.AionDB.toypet.repository.WarehouseRepository;
+import com.grzegorznowakowski.AionDB.toypet.entity.ToypetItemEntity;
+import com.grzegorznowakowski.AionDB.toypet.entity.ToypetLootingEntity;
+import com.grzegorznowakowski.AionDB.toypet.entity.ToypetMerchantEntity;
+import com.grzegorznowakowski.AionDB.toypet.entity.ToypetWarehouseEntity;
+import com.grzegorznowakowski.AionDB.toypet.repository.ToypetItemRepository;
+import com.grzegorznowakowski.AionDB.toypet.repository.ToypetLootingRepository;
+import com.grzegorznowakowski.AionDB.toypet.repository.ToypetMerchantRepository;
+import com.grzegorznowakowski.AionDB.toypet.repository.ToypetWarehouseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,28 +24,36 @@ import java.util.Optional;
 public class ToypetApiController {
 
     @Autowired
-    WarehouseRepository warehouseRepository;
+    ToypetWarehouseRepository warehouseRepository;
     @Autowired
-    MerchantRepository merchantRepository;
+    ToypetMerchantRepository merchantRepository;
     @Autowired
-    LootingRepository lootingRepository;
+    ToypetLootingRepository lootingRepository;
+    @Autowired
+    ToypetItemRepository toypetItemRepository;
 
     @GetMapping("/api/toypet/warehouse/{name}")
-    public ResponseEntity<WarehouseEntity> getToypetWarehouseByName(@PathVariable("name") String name) {
-        Optional<WarehouseEntity> w = warehouseRepository.findByName(name);
-        return w.map(WarehouseEntity -> new ResponseEntity<>(WarehouseEntity, HttpStatus.OK)).orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    public ResponseEntity<ToypetWarehouseEntity> getToypetWarehouseByName(@PathVariable("name") String name) {
+        Optional<ToypetWarehouseEntity> entity = warehouseRepository.findByName(name);
+        return entity.map(WarehouseEntity -> new ResponseEntity<>(WarehouseEntity, HttpStatus.OK)).orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
     @GetMapping("/api/toypet/merchant/{name}")
-    public ResponseEntity<MerchantEntity> getToypetMerchantByName(@PathVariable("name") String name) {
-        Optional<MerchantEntity> m = merchantRepository.findByName(name);
-        return m.map(MerchantEntity -> new ResponseEntity<>(MerchantEntity, HttpStatus.OK)).orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    public ResponseEntity<ToypetMerchantEntity> getToypetMerchantByName(@PathVariable("name") String name) {
+        Optional<ToypetMerchantEntity> entity = merchantRepository.findByName(name);
+        return entity.map(MerchantEntity -> new ResponseEntity<>(MerchantEntity, HttpStatus.OK)).orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
     @GetMapping("/api/toypet/looting/{name}")
-    public ResponseEntity<LootingEntity> getToypetLootingByName(@PathVariable("name") String name) {
-        Optional<LootingEntity> l = lootingRepository.findByName(name);
-        return l.map(LootingEntity -> new ResponseEntity<>(LootingEntity, HttpStatus.OK)).orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    public ResponseEntity<ToypetLootingEntity> getToypetLootingByName(@PathVariable("name") String name) {
+        Optional<ToypetLootingEntity> entity = lootingRepository.findByName(name);
+        return entity.map(LootingEntity -> new ResponseEntity<>(LootingEntity, HttpStatus.OK)).orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
+
+    @GetMapping("/api/toypet/item/{name}")
+    public ResponseEntity<ToypetItemEntity> getToypetItemByName(@PathVariable("name") String name) {
+        Optional<ToypetItemEntity> entity = toypetItemRepository.findByName(name);
+        return entity.map(ItemEntity -> new ResponseEntity<>(ItemEntity, HttpStatus.OK)).orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
 

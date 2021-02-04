@@ -1,6 +1,6 @@
 package com.grzegorznowakowski.AionDB.toypet.repository;
 
-import com.grzegorznowakowski.AionDB.toypet.entity.WarehouseEntity;
+import com.grzegorznowakowski.AionDB.toypet.entity.ToypetMerchantEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
@@ -9,6 +9,6 @@ import java.util.Optional;
 /**
  * @author Grzegorz Nowakowski
  */
-public interface WarehouseRepository extends JpaRepository<WarehouseEntity, Integer>, JpaSpecificationExecutor {
-    Optional<WarehouseEntity> findByName(String name);
+public interface ToypetMerchantRepository extends JpaRepository<ToypetMerchantEntity, Integer>, JpaSpecificationExecutor {
+    Optional<ToypetMerchantEntity> findByName(String name);
 }

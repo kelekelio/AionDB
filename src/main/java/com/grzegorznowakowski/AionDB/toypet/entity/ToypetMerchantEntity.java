@@ -10,24 +10,19 @@ import java.io.Serializable;
  * @author Grzegorz Nowakowski
  */
 @Entity
-@Table(name = "client_toypet_warehouses")
-public class WarehouseEntity implements Serializable  {
+@Table(name = "client_toypet_merchants")
+public class ToypetMerchantEntity implements Serializable {
 
     @Id
-    @Column
     private Integer id;
 
     private String name;
-
     private String description;
 
-    @Column(name = "warehouse_slot_count")
-    private Integer warehouseSlotCount;
+    @Column(name = "rate_price")
+    private Integer ratePrice;
 
-    @Column(name = "warehouse_slot_type")
-    private String warehouseSlotType;
-
-    public WarehouseEntity() {
+    public ToypetMerchantEntity() {
     }
 
     public Integer getId() {
@@ -54,19 +49,11 @@ public class WarehouseEntity implements Serializable  {
         this.description = description;
     }
 
-    public Integer getWarehouseSlotCount() {
-        return warehouseSlotCount;
+    public Integer getRatePrice() {
+        return ratePrice;
     }
 
-    public void setWarehouseSlotCount(Integer warehouseSlotCount) {
-        this.warehouseSlotCount = warehouseSlotCount;
-    }
-
-    public String getWarehouseSlotType() {
-        return warehouseSlotType;
-    }
-
-    public void setWarehouseSlotType(String warehouseSlotType) {
-        this.warehouseSlotType = warehouseSlotType;
+    public void setRatePrice(Integer ratePrice) {
+        this.ratePrice = ratePrice;
     }
 }
