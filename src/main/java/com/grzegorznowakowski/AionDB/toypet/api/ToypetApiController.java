@@ -29,6 +29,11 @@ public class ToypetApiController {
     ToypetFeedRepository toypetFeedRepository;
     @Autowired
     ToypetDopingRepository toypetDopingRepository;
+    @Autowired
+    ToypetBuffRepository toypetBuffRepository;
+    @Autowired
+    ToypetRepository toypetRepository;
+
 
     @GetMapping("/api/toypet/warehouse/{name}")
     public ResponseEntity<ToypetWarehouseEntity> getToypetWarehouseByName(@PathVariable("name") String name) {
@@ -66,6 +71,49 @@ public class ToypetApiController {
         return entity.map(ToypetDopingEntity -> new ResponseEntity<>(ToypetDopingEntity, HttpStatus.OK)).orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
+    @GetMapping("/api/toypet/buff/{name}")
+    public ResponseEntity<ToypetBuffEntity> getToypetBuffByName(@PathVariable("name") String name) {
+        Optional<ToypetBuffEntity> entity = toypetBuffRepository.findByName(name);
+        return entity.map(ToypetBuffEntity -> new ResponseEntity<>(ToypetBuffEntity, HttpStatus.OK)).orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
+
+    @GetMapping("/api/toypet/{id}")
+    public ResponseEntity<ToypetEntity> getToypetBuffByName(@PathVariable("id") Integer id) {
+        Optional<ToypetEntity> entity = toypetRepository.findById(id);
+
+        if (entity.isPresent()) {
+            entity.get().setFunction1(toypetFunction(entity.get().getFuncType1(), entity.get().getFuncTypeName1()));
+            entity.get().setFunction2(toypetFunction(entity.get().getFuncType2(), entity.get().getFuncTypeName2()));
+        }
+
+        return entity.map(ToypetEntity -> new ResponseEntity<>(ToypetEntity, HttpStatus.OK)).orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
+
+
+    private Object toypetFunction (String type, String name) {
+
+        if (type == null) {
+            return null;
+        }
+
+        switch (type) {
+            case "looting":
+                return lootingRepository.findByName(name);
+            case "feeding":
+                return toypetFeedRepository.findByName(name);
+            case "doping":
+                return toypetDopingRepository.findByName(name);
+            case "warehouse":
+                return warehouseRepository.findByName(name);
+            case "merchant":
+                return merchantRepository.findByName(name);
+            case "buff":
+                return toypetBuffRepository.findByName(name);
+            default:
+                return null;
+        }
+
+    }
 
 
 
