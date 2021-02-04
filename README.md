@@ -29,16 +29,4 @@ REQUIRED:
 
 
 APIs:
-1. Item
-  - /api/item/{id}
-  - /api/item/{column}/{value}
-  
-2. Translation
-  - /api/translation/{name}
-  
-3. Dungeons (lists all dungeons)
-  - /api/dungeons
-  
-4. Assemble
-  - /api/assemble/{name}
-  - /api/assemble/{column}/{name}
+https://github.com/kelekelio/AionDB/wiki/API
