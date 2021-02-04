@@ -1,4 +1,4 @@
-package com.grzegorznowakowski.AionDB;
+package com.grzegorznowakowski.AionDB.quests.object;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;

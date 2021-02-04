@@ -1,4 +1,4 @@
-package com.grzegorznowakowski.AionDB;
+package com.grzegorznowakowski.AionDB.quests.object;
 
 import com.grzegorznowakowski.AionDB.db.object.CallbackMatcher;
 
