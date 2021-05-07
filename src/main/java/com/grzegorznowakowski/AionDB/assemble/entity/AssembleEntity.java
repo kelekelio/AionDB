@@ -40,7 +40,7 @@ public class AssembleEntity implements Serializable {
             updatable = false,
             foreignKey = @javax.persistence
                     .ForeignKey(value = ConstraintMode.NO_CONSTRAINT))
-    private List<AssemblePartsEntity> parts;
+    private List<AssemblePartsEntity> assembleParts;
 
 
 
@@ -82,11 +82,11 @@ public class AssembleEntity implements Serializable {
         this.partCriticalName = partCriticalName;
     }
 
-    public List<AssemblePartsEntity> getParts() {
-        return parts;
+    public List<AssemblePartsEntity> getAssembleParts() {
+        return assembleParts;
     }
 
-    public void setParts(List<AssemblePartsEntity> parts) {
-        this.parts = parts;
+    public void setAssembleParts(List<AssemblePartsEntity> assembleParts) {
+        this.assembleParts = assembleParts;
     }
 }
