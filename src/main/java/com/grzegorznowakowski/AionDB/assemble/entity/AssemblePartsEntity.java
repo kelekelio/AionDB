@@ -9,7 +9,7 @@ import java.io.Serializable;
  * @author Grzegorz Nowakowski
  */
 @Entity
-@Table(name = "client_assemble_parts")
+@Table(name = "client_assembly_items_assemble_parts")
 public class AssemblePartsEntity implements Serializable {
 
 

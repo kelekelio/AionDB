@@ -12,7 +12,7 @@ import java.io.Serializable;
  * @author Grzegorz Nowakowski
  */
 @Entity
-@Table(name ="client_combine_recipe_expansion")
+@Table(name ="client_combine_recipes_combine_recipe_expansion")
 public class RecipeExpansionEntity implements Serializable {
 
     @JsonIgnore
